@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:./Res_flat1.rvi
+ input file:eplusout.eso
+ output file:eplusout.csv
+ getting all vars from:eplusout.eso
+  number variables requested for output=         346
+ ReadVars Run Time=00hr 01min 33.84sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:./Res_flat1.mvi
+ input file:eplusout.mtr
+ output file:eplusmtr.csv
+ getting all vars from:eplusout.mtr
+  number variables requested for output=          13
+ ReadVars Run Time=00hr 00min  5.20sec
+ ReadVarsESO program completed successfully.

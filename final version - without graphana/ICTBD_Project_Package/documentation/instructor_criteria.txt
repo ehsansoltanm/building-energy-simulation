@@ -1,0 +1,544 @@
+POLITECNICO DI TORINO
+A.Y. 2024-25
+MASTER DEGREE IN ICT4SS
+01QWXBH - ICT in BUILDING DESIGN
+Proff. Chiesa and Bottaccioli
+
+Exercise IDF models
+
+On the course page, you will find a folder named “Exercise_Building_model”. Inside, you find six sub-folders
+with specific IDFs in line with what we have seen during the last lecture (NOTE: IDF are in EnergyPlus
+version 9.4 to be converted to the desired version before modifications or use in BESOS and the other
+exercise actions.
+Please go to the google spreadsheet (https://docs.google.com/spreadsheets/d/1YY0xUmobplX6tuozecFxsCdH8mk4GHY3DfOAxf_nTo/edit?usp=sharing) and check the name of your IDF.
+Finally, you have a folder with TMY (starting weather). Additionally, there is a station with data for Turin on
+the weather underground. For the cold climate, check station IKASTR4, while for the hot climate, look for
+ISPATA5.
+
+Such as underlined the 8th of October during the lecture on IDF, I synthesised what we discussed together
+and fixed it on the board.
+
+Input:
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+
+Thermal insulation of walls
+Thermal insulation of roof or last slab
+Change of the window type: single Sgl, (Double Dbl Air,) Double LoE Arg, Triple Tpl LoE Arg
+Set point temperatures
+Ventilation rate (schedule nat. vent) – please on summer
+Ventilation control thresholds (max out; min in; delta T)
+Shading (external or internal blinds) control thresholds (temperature; solar irradiation global
+horizontal)
+8. Mechanical ventilation rates
+9. Type of lighting system
+10. Window-to-wall ratio (Eppy or Geomeppy not in the IDF)
+11. Others to be discussed together if interesting for you (e.g. scheduling time etc.)
+
+Output (variable to be optimised):
+a. Energy indicators:
+a. Heating energy needs
+b. Cooling energy needs
+c. Lighting energy needs
+b. Thermal comfort:
+a. Indoor temperatures (or indoor operative temperatures)
+b. (or PMV/PPD POR or numbers of hours for adaptive thermal comfort thresholds)
+c. Others to be discussed together if you have an interest
+NOTE:
+
+For the energy needs you need to take for:
+-
+
+-
+
+-
+
+Heating: you can use “districtheating”, which is an output that includes heating simple HVAC
+output. Please check for residual almost zero values for filtering. Otherwise, you may check per
+zone sensible heating points (pay attention in this case; you need to sum the values for all the
+zones). This districtheating output is in [J] and refers to the envelope needs (Net energy). It needs
+to be first reported to kWh (or kWh/m2) and after divided by the average seasonal COP to retrieve
+the energy vector value. If the COP is the one of an electrical unit, this final value is kWh electrical
+and may be summed to the other three energy voices (both professors may help you in this
+process)
+Cooling: you can use the EnergyPlus “districtcooling” output used in simple HVAC models. It is in [J]
+and needs again to be transformed in [kWh or in kWh/m2] and divided by a system seasonal COP
+to retrieve the electricity kWh values that may be summed with the the lighting ones.
+lighting output of EnergyPlus (check the Input/output manual) that expresses the electricity [kWh
+or kWh/m2] for lighting. Pay attention if you take equipment or a similar voice that this output
+point also includes lighting variations; otherwise is not applicable;
+
+Finally, if all three voices are in electricity, you may sum them up. If one is, for example, in natural gas, all
+need to be translated into primary energy values (see UNI/TS 11300). See slides.
+
+Thanks
+Regards
+GC
+
+Office_IDF.idf
+Materials (design optimisation)
+INSULATION:
+_InsulationEX_Roof_.01,
+!is applied to the ROOF
+_InsulationEX_.01,
+!is applied to WALLS
+WINDOW:
+Sgl Clr 6mm - 1001
+Sgl Clr 6mm - 2001
+!with shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1003
+!without shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 2003
+!with shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1002
+!without shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 2002
+!with shading
+NOTE: change window in FenestrationSurface:Detailed by modyfing the !- Construction Name field (and
+do the same for the shaded window name in the shading WindowShadingControl component)
+OTHERS:
+(facultative) link the window change to a change in the ZoneInfiltration:DesignFlowRate. To do that
+A. for all Zone identify the ZoneInfiltration:DesignFlowRate element
+B. change the Design Volume Flow Rate calculation method from Flow/zone to AirChanges/Hour
+C. put a number there  ,
+!- Air Changes Per Hour
+D. modify the number to 0.7 for Sgl, 0.4 for Dbl, 0.2 for Tpl
+LIGHTING (artificial)
+Lights, Block1:OfficeXSWX1f General lighting, !- Name
+Lights, Block1:OfficeXSEX1f General lighting, !- Name
+Lights, Block1:OfficeXNWX1f General lighting, !- Name
+Lights, Block1:OfficeXNEX1f General lighting, !- Name
+Lights, Block1:CorridorX1f General lighting, !- Name
+Lights, Block2:OfficeXSWX2f General lighting, !- Name
+Lights, Block2:OfficeXSEX2f General lighting, !- Name
+Lights, Block2:OfficeXNWX2f General lighting, !- Name
+Lights, Block2:OfficeXNEX2f General lighting, !- Name
+Lights, Block2:CorridorX2f General lighting, !- Name
+Design choices:
+7.5,
+!- Watts per Zone Area {W/m2} ##change this number from 5 to 2
+NOTE: dimmer parameters can be changed using Daylighting:Controls or moving the sensor in the
+room Daylighting:ReferencePoint
+(facultative) check the impact of changing the Illuminance Setpoint from 300 to 500
+SHADING control (same logic, but applied to the different zones) – Blocco1
+WindowShadingControl,11001
+Block1:OfficeXSWX1f
+WindowShadingControl,21001,
+Block1:OfficeXSEX1f
+WindowShadingControl,31001
+Block2:OfficeXSWX2f
+WindowShadingControl,41001
+Block2:OfficeXSEX2f
+WindowShadingControl,51001
+Block2:OfficeXNWX2f
+WindowShadingControl,61001
+Block2:OfficeXNEX2f
+WindowShadingControl,11002
+Block1:OfficeXNWX1f
+WindowShadingControl,11003
+Block1:OfficeXNEX1f
+
+NOTE: Please change the shaded glazed Construction name when the glazing is changing.
+Shading control arrives on:
+24,
+!- Setpoint
+120,
+!- Setpoint 2
+On 24/7,
+!- Schedule name  eventually change to _Summer_Ventilation
+NATURAL(or fan) VENTILATION – Blocco1
+ZoneVentilation:DesignFlowRate, Block1:OfficeXSWX1f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block1:OfficeXSEX1f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block1:OfficeXNWX1f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block1:OfficeXNEX1f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block1:CorridorX1f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block2:OfficeXSWX2f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block2:OfficeXSEX2f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block2:OfficeXNWX2f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block2:OfficeXNEX2f Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Block2:CorridorX2f Nat Vent, !- Name
+For Ventilative cooling control:
+Airflows
+A. Change the Design Volume Flow Rate calculation method from Flow/Zone to AirChanges/Hour
+B. Add a number  ,
+!- Air Changes Per Hour
+C. Variate the number from 0 to 6
+Control temperatures (potential changing values)
+24,
+!- Minimum indoor temperature (degC)
+0,
+!- Max temperature difference for operation  Delta Temperature {deltaC}
+28,
+!- Maximum outdoor Temperature {C}
+MECH Ventilation
+DesignSpecification:OutdoorAir  one per zone, it can be modified the airflows by changing (or
+adding) values in one or more of the following fields (e.g. doubling the Air Flow per Person and/or the
+one per floor area):
+.008,
+!- Outdoor Air Flow per Person {m3/s}
+.0008,
+!- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
+0,
+!- Outdoor Air Flow per Zone {m3/s}
+0,
+!- Outdoor Air Flow Air Changes per Hour
+In addition it can be possible to activate/deactivate the heat recovery of the mech. Ventilation by acting
+on all the Zone inside the ZoneHVAC:IdealLoadsAirSystem
+Looking at the field
+Sensible,
+!- Heat Recovery Type  changing Sensible to None
+Or reducing/increasing its effectiveness (e.g. 0.5 or 0.9)
+0.7,
+!- Sensible Heat Recovery Effectiveness
+
+Res_flat1.idf
+Materials (design optimisation)
+INSULATION:
+MW Glass Wool (rolls)_.0001,
+!is applied to the ROOF
+_Insulation_.0001,
+!is applied to WALLS
+Note: the “XPS Extruded Polystyrene - CO2 Blowing_.0795” is used in stairs (no need to be changed)
+WINDOW:
+Sgl Clr 6mm – 1002
+Sgl Clr 6mm – 2002
+!with shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001
+!without shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 2001
+!with shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003
+!without shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 2003
+!with shading
+OTHERS:
+(facultative) link the window change to a change in the ZoneInfiltration:DesignFlowRate. To do that
+E. for all Zone identify the ZoneInfiltration:DesignFlowRate element
+F. change the Design Volume Flow Rate calculation method from Flow/zone to AirChanges/Hour
+G. put a number there  ,
+!- Air Changes Per Hour
+H. modify the number to 0.7 for Sgl, 0.4 for Dbl, 0.2 for Tpl
+LIGHTING (artificial)
+Lights, Blocco1:Zona3 General lighting,
+!- Name
+Lights, Blocco1:Zona6 General lighting,
+!- Name
+Lights, Blocco1:Zona5 General lighting,
+!- Name
+Lights, Blocco1:Zona7 General lighting,
+!- Name
+Lights, Blocco1:Zona1 General lighting,
+!- Name
+Lights, Blocco1:Zona2 General lighting,
+!- Name
+Lights, Blocco1:Zona4 General lighting,
+!- Name
+Design choices:
+3,
+!- Watts per Zone Area {W/m2} ##change this number from 5 to 2
+(facultative) schedule lighting
+ change _EN16798-1_RES_light  _EN16798-1_RES_light2
+NOTE: dimmer parameters can be changed using Daylighting:Controls or moving the sensor in the
+room Daylighting:ReferencePoint
+SHADING control (same logic, but applied to the different zones) – Blocco1
+WindowShadingControl,21001
+! Blocco1:Zona3
+WindowShadingControl,31001,
+!Blocco1:Zona6
+WindowShadingControl,41001
+!Blocco1:Zona7
+WindowShadingControl,51001
+!Blocco1:Zona1
+WindowShadingControl,61001
+! Blocco1:Zona2
+WindowShadingControl,71001
+! Blocco1:Zona4
+Here: The name of the glazed construction can change if the glazing is changing.
+Shading control arrives on:
+24,
+!- Setpoint
+120,
+!- Setpoint 2
+Summer (Northern Hemisphere),
+!- Schedule name  eventually change to On 24/7
+
+NATURAL(or fan) VENTILATION – Blocco1
+ZoneVentilation:DesignFlowRate, Blocco1:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona6 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona5 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona7 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona1 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Blocco1:Zona4 Nat Vent, !- Name
+For Ventilative cooling control:
+Airflows
+D. Change the Design Volume Flow Rate calculation method from Flow/Zone to AirChanges/Hour
+E. Add a number  ,
+!- Air Changes Per Hour
+F. Variate the number from 0 to 6
+Control temperatures (potential changing values)
+18,
+!- Minimum indoor temperature (degC)
+2,
+!- Max temperature difference for operation
+100,
+!- Maximum outdoor Temperature {C}
+MECH Ventilation
+DesignSpecification:OutdoorAir  one per zone, it can be modified the airflows by changing (or adding)
+values in one or more of the following fields (e.g. doubling the Air Flow per Person):
+.01,
+!- Outdoor Air Flow per Person {m3/s}
+0,
+!- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
+0,
+!- Outdoor Air Flow per Zone {m3/s}
+0,
+!- Outdoor Air Flow Air Changes per Hour
+In addition it can be possible to activate/deactivate the heat recovery of the mech. Ventilation by acting
+on all the Zone inside
+ZoneHVAC:IdealLoadsAirSystem
+Looking at the field
+Sensible,
+!- Heat Recovery Type  changing Sensible to None
+
+Res_flat2_IDF.idf
+Materials (design optimisation)
+INSULATION:
+MW Glass Wool (rolls)_.0001,
+!is applied to the ROOF
+_Insulation_.0001,
+!is applied to WALLS
+Note: the “XPS Extruded Polystyrene - CO2 Blowing_.0795” is used in stairs (no need to be changed)
+WINDOW:
+Sgl Clr 6mm – 1002
+Sgl Clr 6mm – 2002
+!with shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001
+!without shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 2001
+!with shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003
+!without shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 2003
+!with shading
+OTHERS:
+(facultative) link the window change to a change in the ZoneInfiltration:DesignFlowRate. To do that
+I. for all Zone identify the ZoneInfiltration:DesignFlowRate element
+J. change the Design Volume Flow Rate calculation method from Flow/zone to AirChanges/Hour
+K. put a number there  ,
+!- Air Changes Per Hour
+L. modify the number to 0.7 for Sgl, 0.4 for Dbl, 0.2 for Tpl
+LIGHTING (artificial)
+Lights, Flat2:Zona3 General lighting,
+!- Name
+Lights, Flat2:Zona4 General lighting,
+!- Name
+Lights, Flat2:Zona2 General lighting,
+!- Name
+Lights, Flat2:Zona1 General lighting,
+!- Name
+Design choices:
+3,
+!- Watts per Zone Area {W/m2} ##change this number from 5 to 2
+(facultative) schedule lighting
+ change _EN16798-1_RES_light  _EN16798-1_RES_light2
+NOTE: dimmer parameters can be changed using Daylighting:Controls or moving the sensor in the
+room Daylighting:ReferencePoint
+SHADING control (same logic, but applied to the different zones) – Blocco1
+WindowShadingControl,21001
+Flat2:Zona4
+WindowShadingControl,31001,
+Flat2:Zona2
+WindowShadingControl,41001
+Flat2:Zona1
+NOTE: The name of the glazed construction can change if the glazing is changing.
+Shading control arrives on:
+24,
+!- Setpoint
+120,
+!- Setpoint 2
+Summer (Northern Hemisphere),
+!- Schedule name  eventually change to On 24/7
+NATURAL(or fan) VENTILATION – Blocco1
+ZoneVentilation:DesignFlowRate, Flat2:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Flat2:Zona4 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Flat2:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, Flat2:Zona1 Nat Vent, !- Name
+For Ventilative cooling control:
+
+Airflows
+G. Change the Design Volume Flow Rate calculation method from Flow/Zone to AirChanges/Hour
+H. Add a number  ,
+!- Air Changes Per Hour
+I. Variate the number from 0 to 6
+Control temperatures (potential changing values)
+18,
+!- Minimum indoor temperature (degC)
+2,
+!- Max temperature difference for operation
+100,
+!- Maximum outdoor Temperature {C}
+MECH Ventilation
+DesignSpecification:OutdoorAir  one per zone, it can be modified the airflows by changing (or
+adding) values in one or more of the following fields (e.g. doubling the Air Flow per Person):
+.01,
+!- Outdoor Air Flow per Person {m3/s}
+0,
+!- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
+0,
+!- Outdoor Air Flow per Zone {m3/s}
+0,
+!- Outdoor Air Flow Air Changes per Hour
+In addition it can be possible to activate/deactivate the heat recovery of the mech. Ventilation by acting
+on all the Zone inside
+ZoneHVAC:IdealLoadsAirSystem
+Looking at the field
+Sensible,
+!- Heat Recovery Type  changing Sensible to None
+
+res_multifloor_IDF.idf
+Materials (design optimisation)
+INSULATION:
+MW Glass Wool (rolls)_.0001,
+!is applied to the ROOF
+_Insulation_.0001,
+!is applied to WALLS
+Note: the “XPS Extruded Polystyrene - CO2 Blowing_.0795” is used in stairs (no need to be changed)
+WINDOW:
+Sgl Clr 6mm – 1002
+Sgl Clr 6mm – 2002
+!with shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001
+!without shading
+Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 2001
+!with shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003
+!without shading
+Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 2003
+!with shading
+OTHERS:
+(facultative) link the window change to a change in the ZoneInfiltration:DesignFlowRate. To do that
+M. for all Zone identify the ZoneInfiltration:DesignFlowRate element
+N. change the Design Volume Flow Rate calculation method from Flow/zone to AirChanges/Hour
+O. put a number there  ,
+!- Air Changes Per Hour
+P. modify the number to 0.7 for Sgl, 0.4 for Dbl, 0.2 for Tpl
+LIGHTING (artificial)
+Lights, ResXfloor1:Zona3 General lighting, !- Name
+Lights, ResXfloor1:Zona2 General lighting, !- Name
+Lights, ResXfloor1:Zona1 General lighting, !- Name
+Lights, ResXfloor2:Zona3 General lighting, !- Name
+Lights, ResXfloor2:Zona2 General lighting, !- Name
+Lights, ResXfloor2:Zona1 General lighting, !- Name
+Lights, ResXfloor3:Zona3 General lighting, !- Name
+Lights, ResXfloor3:Zona2 General lighting, !- Name
+Lights, ResXfloor3:Zona1 General lighting, !- Name
+Lights, ResXfloor4:Zona3 General lighting, !- Name
+Lights, ResXfloor4:Zona2 General lighting, !- Name
+Lights, ResXfloor4:Zona1 General lighting, !- Name
+Lights, ResXfloor5:Zona3 General lighting, !- Name
+Lights, ResXfloor5:Zona2 General lighting, !- Name
+Lights, ResXfloor5:Zona1 General lighting, !- Name
+Design choices:
+3,
+!- Watts per Zone Area {W/m2} ##change this number from 5 to 2
+(facultative) schedule lighting
+ change _EN16798-1_RES_light  _EN16798-1_RES_light2
+NOTE: dimmer parameters can be changed using Daylighting:Controls or moving the sensor in the
+room Daylighting:ReferencePoint
+SHADING control (same logic, but applied to the different zones) – Blocco1
+WindowShadingControl,11001
+ResXfloor1:Zona3
+WindowShadingControl,21001
+ResXfloor1:Zona2
+WindowShadingControl,31001,
+ResXfloor1:Zona1
+WindowShadingControl,41001,
+ResXfloor2:Zona3
+
+WindowShadingControl,51001,
+WindowShadingControl,61001,
+WindowShadingControl,71001
+WindowShadingControl,81001
+WindowShadingControl,91001,
+WindowShadingControl,101001,
+WindowShadingControl,111001,
+WindowShadingControl,121001,
+WindowShadingControl,131001,
+WindowShadingControl,141001,
+WindowShadingControl,151001,
+
+ResXfloor2:Zona2
+ResXfloor2:Zona1
+ResXfloor3:Zona3
+ResXfloor3:Zona2
+ResXfloor3:Zona1
+ResXfloor4:Zona3
+ResXfloor4:Zona2
+ResXfloor4:Zona1
+ResXfloor5:Zona3
+ResXfloor5:Zona2
+ResXfloor5:Zona1
+
+NOTE: The name of the glazed construction can change if the glazing is changing.
+Shading control arrives on:
+24,
+!- Setpoint
+120,
+!- Setpoint 2
+Summer (Northern Hemisphere),
+!- Schedule name  eventually change to On 24/7
+NATURAL(or fan) VENTILATION – Blocco1
+ZoneVentilation:DesignFlowRate, ResXfloor1:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor1:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor1:Zona1 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor2:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor2:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor2:Zona1 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor3:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor3:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor3:Zona1 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor4:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor4:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor4:Zona1 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor5:Zona3 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor5:Zona2 Nat Vent, !- Name
+ZoneVentilation:DesignFlowRate, ResXfloor5:Zona1 Nat Vent, !- Name
+For Ventilative cooling control:
+Airflows
+J. Change the Design Volume Flow Rate calculation method from Flow/Zone to AirChanges/Hour
+K. Add a number  ,
+!- Air Changes Per Hour
+L. Variate the number from 0 to 6
+Control temperatures (potential changing values)
+18,
+!- Minimum indoor temperature (degC)
+2,
+!- Max temperature difference for operation
+100,
+!- Maximum outdoor Temperature {C}
+MECH Ventilation
+DesignSpecification:OutdoorAir  one per zone, it can be modified the airflows by changing (or
+adding) values in one or more of the following fields (e.g. doubling the Air Flow per Person):
+.01,
+!- Outdoor Air Flow per Person {m3/s}
+0,
+!- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
+
+0,
+!- Outdoor Air Flow per Zone {m3/s}
+0,
+!- Outdoor Air Flow Air Changes per Hour
+In addition it can be possible to activate/deactivate the heat recovery of the mech. Ventilation by acting
+on all the Zone inside
+ZoneHVAC:IdealLoadsAirSystem
+Looking at the field
+Sensible,
+!- Heat Recovery Type  changing Sensible to None
+
+

@@ -1,0 +1,10 @@
+Selected Best Solution (Balanced Approach):
+Roof Insulation                      5.199999e-01
+Wall Insulation                      6.146969e-02
+Lighting watt/zone_floor_area        2.448611e+00
+Ventilation ACH                      4.527472e+00
+Mech. Vent. OutdoorAirFlow/Person    2.106478e-02
+Electricity:Facility                 5.945276e+09
+DistrictHeating:Facility             1.265361e+10
+DistrictCooling:Facility             2.564732e+09
+Normalized_Score                     1.843332e-01

@@ -1,0 +1,421 @@
+23/09/2024
+
+COURSE PROGRAMME
+ICT in building design
+
+prof. G.Chiesa & prof. L.Bottaccioli
+CEAR-08/C – IINF-05/A
+Progettazione tecnologica e ambientale dell'architettura – Sistemi di elaborazione delle informazioni
+
+9/23/2024
+
+.
+
+ICT in Building Design
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+6
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+• Tuesday (presence)
+Room 11S
+14:30 – 17:30
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Lecture time
+• Wednesday (presence)
+Room 4M
+08:30-10:00
+
+Note:
+20/11 lecture moved in the afternoon at the
+Valentino POLITO site
+
+9/23/2024
+
+ICT in Building Design
+
+7
+
+1
+
+23/09/2024
+
+Topics
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+L-BD 1 Course programme and exam rules
+L-BD 2 - Introduction to sustainable design & cityfutures
+L-BD 3 - Building as a system - part A, B, C
+L-BD 4 - Introduction to smart buildings
+L-BD 5 - Building modelling
+L-BD 6 - EPBD and Building envelope and modelling
+L-BD 7 - Schedule and standard reference values
+L-BD 8 IDF EnergyPlus input file
+L-BD 9 - Thermal comfort
+L-BD 10 - ventilation and shading systems + control
+logic IDF
+• L-BD 11a - Daylighting in buildings: requirements and
+performance calculation and control
+• L-BD 11b - Artificial lighting
+• L-BD 11c - LENI
+# IP students on shading and lighting
+9/23/2024
+
+• L-BD 12 - IAQ
+• LBD 13 - Building model calibration
+# PRELUDE EVENT. ICT Didactic Activities Exhibition
+# IP students’ comfort monitoring kits
+• L-BD 14 - climate data elaborations and usage in
+simulation
+• L-BD 15 - Introduction to digital architecture
+•
+•
+•
+•
+
+L-ICT 1 - Course programme and exam rules
+L-ICT 2 - Principles of Thermodynamics
+L-ICT 3 - BMS
+L-ICT 4 - IoTL-ICT surrogate design / white-grey-black
+
+• Lab-01 Exercise introduction & basic KPIs
+• Lab-02 Group definition
+• Lots of group ex. Checks
+
+ICT in Building Design
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+8
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+PRELUDE EVENT. ICT Didactic Activities Exhibition
+• 20 November 2024
+The 1.5h morning lecture is moved to the afternoon at
+POLITO, Valentino Castle, Salone d’onore | Viale Pier Andrea Mattioli 39 - Torino
+Registration will be required in any case being followed by a catering event
+TOPIC: conclusion education activities of the PRELUDE H2020 Project
+- involving Polito (arch & ICT) students in project development,
+- international lecture/conference series,
+- large citizenscience involving 6 schools in the Piedmont Region (IEQ/IAQ measurements and activation).
+
+9
+
+2
+
+23/09/2024
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+• Introductive aspects supporting a direct dialogue with building-correlated
+professions
+• Building energy/sustainable open topics connected to intelligent buildings and
+basic directives (EPBD, SRI, EN 16798-1...)
+• Building modelling and dynamic simulation aspects and tools, building
+monitoring samples
+
+• ENVIRONMENTAL COMFORT issues & controls
+• Thermal comfort
+• Visual comfort
+• IAQ (air quality comfort)
+• (acoustic comfort)
+9/23/2024
+
+ICT in Building Design
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Building treated topics
+
+10
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+ICT treated topics
+
+• Basics of building physics
+• ICT role in building design and operation
+• Design parameter optimization
+• Surrogate model
+• Operational phase modelling
+• Platforms for smart buildings
+
+9/23/2024
+
+ICT in Building Design
+
+11
+
+3
+
+23/09/2024
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+ICT and BD treated topics
+
+Parametric Optimisation of smart/intelligent
+Building operation and building design choices
+By using
+
+white, black and grey
+
+modelling techniques
+
+Including building and built environment variables and constraints
+
+9/23/2024
+
+ICT in Building Design
+
+12
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Exercise topics
+NOTE: Exercises simulate tangible professional aspects connected to ICT/IT usage in the building
+domain.  building management optimisation (operational) & building design choice opt.
+Part 1 synthesises three main aspects (Building Design/Rating):
+• Support optimising design choices (specific Nexus series follow that)
+• Support retrofitting analyses
+• Describe building-weather & building-energy correlations till the passage from white to black
+box models
+Part 2 synthesises ... Main aspects (Building Operation):
+• Smart building systems (simulation acts like sensors feeding database)
+• Energy/temperature(comfort) forecasting
+• BMS data flows (simulation used as sensor/actuator managed via external platforms)
+
+9/23/2024
+
+ICT in Building Design
+
+13
+
+4
+
+23/09/2024
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Exercise topics
+
+ICT in Building Design
+
+14
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Adv. exercise (suggested)
+
+Exercise topics
+
+Early-design stage
+
+Basic exercise (compulsory)
+
+Optimal design parameter choice
+Gen optimisation
+Design of experiment
+Opt IDF
+Surrogate model
+
+Simulation step
+Energy signature
+MQTT
+REST
+controls
+9/23/2024
+
+Prediction model
+ICT in Building Design
+
+15
+
+OPERATION
+
+DESIGN
+
+IDF
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+9/23/2024
+
+5
+
+23/09/2024
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+9/23/2024
+
+ICT in Building Design
+
+16
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+The final exam with relevant scoring will include:
+• a test to assess theoretical knowledge acquired during the course (weight:
+40% of the final score; duration: 1 h) – consultation of supporting tools and
+material is not allowed;
+• an evaluation by the teachers of the final results of the exercises carried
+out during the course (data, analyses, code and VM) and presented in a
+book/report one week before the final exam (weight: 40%);
+• a slide presentation of the results of the exercises carried out during the
+course and discussion about them to check students’ comprehension of
+the learning process (weight: 20%; duration: 20 minutes per student team).
+
+9/23/2024
+
+ICT in Building Design
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+EXAM PROCEDURE (from course page)
+
+17
+
+6
+
+23/09/2024
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+EXAM PROCEDURE
+
+The Exam will be based on the following steps:
+
+1
+
+Written test
+(individual - theoretical aspects and lectures)
+
+2
+
+Exercises (ex. development + VM + final report)
+(group work – delivery one week before the exam date)
+
+3
+
+Oral presentation
+
+9/23/2024
+
+ICT in Building Design
+
+18
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+• Giacomo Chiesa
+DAD
+
+• Lorenzo Bottaccioli
+DAUIN
+
+giacomo.chiesa@polito.it
+
+lorenzo.bottaccioli@polito.it
+
+9/23/2024
+
+ICT in Building Design
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Professors
+
+19
+
+7
+
+23/09/2024
+
+College of Electronics and Telecommunication Engineering, and Physics – Master Degree in ICT for Smart Societies
+Course: ICT in Building Design, Academic Year 2024-25
+Professors: Giacomo Chiesa, Lorenzo Bottaccioli
+
+Disclaimer: this material cannot be used or diffused outside this classroom
+
+Useful materials
+Past years, work results (the exercise has changed!!)
+- 2019 Parametric Optimization of Window-to-Wall Ratio for Passive Buildings Adopting A
+Scripting Methodology to Dynamic-Energy Simulation, https://doi.org/10.3390/su11113078
+- 2020 Assessing Optimal U-value in Residential Buildings in Temperate Climate Conditions
+Considering Massive Dynamic Simulation and Statistical Uncertainty,
+https://dx.doi.org/10.1007/978-3-030-30841-4_25 https://hdl.handle.net/11583/2781354
+- 2019 Ventilative cooling effectiveness in office buildings: a parametrical simulation,
+https://hdl.handle.net/11583/2732606
+- 2018 Insulation, building mass and airflows provisional multivariable analysis,
+https://hdl.handle.net/11583/2723216
+
+9/23/2024
+
+ICT in Building Design
+
+20
+
+8
+
+

@@ -1,0 +1,62 @@
+# EnergyPlus outputs
+*.eso
+*.err
+*.audit
+*.mdd
+*.mtd
+*.rdd
+*.mtr
+
+# temporary & system
+.DS_Store
+Thumbs.db
+
+# python
+__pycache__/
+*.pyc
+
+# large simulation outputs
+
+
+
+# EnergyPlus outputs
+*.eso
+*.err
+*.audit
+*.mdd
+*.mtd
+*.rdd
+*.mtr
+*.bnd
+*.shd
+*.eio
+*.end
+
+# Python
+__pycache__/
+*.pyc
+
+# system
+.DS_Store
+Thumbs.db
+
+# compressed files
+*.zip
+*.rar
+
+# large models & binaries
+*.fmu
+*.keras
+*.joblib
+
+# compressed
+*.zip
+*.rar
+
+# large datasets
+*simulation_outputs.csv
+*normalized_total.csv
+
+# large simulation outputs
+*eplusout.csv
+*Res_flat1.csv

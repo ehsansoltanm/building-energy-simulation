@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<svg width="250mm" height="200mm" viewBox="0 0 2500 1500"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events">
+<g font-family="Verdana" font-size="8">
+  <text x="200" y="40">Unused Non-Parent Objects:</text>
+  <text x="220" y="60">BLOCCO1:ZONA3</text>
+  <text x="220" y="80">BLOCCO1:ZONA6</text>
+  <text x="220" y="100">BLOCCO1:ZONA5</text>
+  <text x="220" y="120">BLOCCO1:ZONA7</text>
+  <text x="220" y="140">BLOCCO1:ZONA1</text>
+  <text x="220" y="160">BLOCCO1:ZONA2</text>
+  <text x="220" y="180">BLOCCO1:ZONA4</text>
+  <text x="220" y="200">BLOCCO1:ZONA3 IDEAL LOADS AIR</text>
+  <text x="220" y="220">OutdoorAir:Node</text>
+  <text x="220" y="240">BLOCCO1:ZONA6 IDEAL LOADS AIR</text>
+  <text x="220" y="260">OutdoorAir:Node</text>
+  <text x="220" y="280">BLOCCO1:ZONA5 IDEAL LOADS AIR</text>
+  <text x="220" y="300">OutdoorAir:Node</text>
+  <text x="220" y="320">BLOCCO1:ZONA7 IDEAL LOADS AIR</text>
+  <text x="220" y="340">OutdoorAir:Node</text>
+  <text x="220" y="360">BLOCCO1:ZONA1 IDEAL LOADS AIR</text>
+  <text x="220" y="380">OutdoorAir:Node</text>
+  <text x="220" y="400">BLOCCO1:ZONA2 IDEAL LOADS AIR</text>
+  <text x="220" y="420">OutdoorAir:Node</text>
+  <text x="220" y="440">BLOCCO1:ZONA4 IDEAL LOADS AIR</text>
+  <text x="220" y="460">OutdoorAir:Node</text>
+  <text x="200" y="500">
+The following are not supported: objects related to controls or ZoneHVAC:IdealLoadsAirSystem</text>
+</g>
+</svg>
